@@ -4,7 +4,7 @@
 		"name": "Teste API Ebac",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "49801890",
-		"_collection_link": "https://gabriel-ncimadon-1416600.postman.co/workspace/820d93f0-0a43-4f1f-a3f2-4cb03dd10760/collection/49801890-400dba57-084a-4cd0-ab59-262457aa711a?action=share&source=collection_link&creator=49801890"
+		"_collection_link": "https://gabriel-ncimadon-1416600.postman.co/workspace/Estudos-EBAC~820d93f0-0a43-4f1f-a3f2-4cb03dd10760/collection/49801890-400dba57-084a-4cd0-ab59-262457aa711a?action=share&source=collection_link&creator=49801890"
 	},
 	"item": [
 		{
@@ -77,6 +77,24 @@
 		},
 		{
 			"name": "Buscar usuario por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Busca por usuario\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Gabriel\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -114,6 +132,9 @@
 						"exec": [
 							"pm.test(\"Status code is 400\", function () {\r",
 							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Mensagem de erro\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Usuário não encontrado\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -159,6 +180,9 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Mensagem de sucesso\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -178,7 +202,7 @@
 					"raw": "{\r\n  \"nome\": \"Gabriel Cimadon\",\r\n  \"email\": \"gabriel.ncimadon@gmail.com\",\r\n  \"password\": \"teste\",\r\n  \"administrador\": \"true\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3000/usuarios/mxzdaOCKgAGWFHO1",
+					"raw": "http://localhost:3000/usuarios/WXuY4zPtYDqVpXvn",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -186,7 +210,7 @@
 					"port": "3000",
 					"path": [
 						"usuarios",
-						"mxzdaOCKgAGWFHO1"
+						"WXuY4zPtYDqVpXvn"
 					]
 				}
 			},
@@ -201,6 +225,9 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Mensagem de erro\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Nenhum registro excluído\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -244,7 +271,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							""
+							"pm.test(\"Mensagem de sucesso\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -292,7 +321,9 @@
 							"pm.test(\"Status code is 400\", function () {\r",
 							"    pm.response.to.have.status(400);\r",
 							"});\r",
-							""
+							"pm.test(\"Mensagem de erro\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {},
